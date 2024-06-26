@@ -11,7 +11,7 @@ const About = () => {
         <p>
           This is a simple, efficient and user friendly web application to keep track of jobs for any person.
           <br />
-          A simple and straigt forward sign-up and sign-in enables a user to do desired work.
+          A simple and straight forward sign-up and sign-in enables a user to do desired work.
           <br />
           User can create jobs, update them and even delete as per their requirements.
           <br />

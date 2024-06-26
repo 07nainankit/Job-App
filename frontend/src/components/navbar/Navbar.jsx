@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import { RiContactsBook2Fill } from "react-icons/ri";
+import { MdWork } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -23,7 +23,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg ">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            <RiContactsBook2Fill /> Job Track
+              <MdWork/>   Job Track
           </Link>
 
           <button

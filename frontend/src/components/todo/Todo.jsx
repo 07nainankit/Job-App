@@ -5,6 +5,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Update from "./Update";
 import axios from "axios";
+import { Link } from 'react-router-dom';
+import { BsInfoCircle } from 'react-icons/bs';
+import { AiOutlineEdit } from 'react-icons/ai';
+import { MdOutlineDelete } from 'react-icons/md';
 
 let id = sessionStorage.getItem("id");
  
@@ -28,7 +32,7 @@ const Todo = () => {
 
   const submit = async () => {
     if (Inputs.company === "" || Inputs.date === "" || Inputs.status === "" || Inputs.category === "") {
-      toast.error("company or date or status or category Can't Be Empty");
+      toast.error("Complete data missing !!");
     } else {
       if (id) {
         await axios
@@ -74,7 +78,6 @@ const Todo = () => {
     toUpdateArray = Array[value];
   };
 
-// ${window.location.origin}
   useEffect(() => {
     if (id) {
       const fetch = async () => {
@@ -90,15 +93,15 @@ const Todo = () => {
 
   return (
     <>
+      {/* {submit} */}
       <div className="todo">
         <ToastContainer />
         <div className="todo-main container d-flex justify-content-center align-items-center my-4 flex-column">
-          <div className="d-flex flex-column todo-inputs-div w-lg-50 w-100 p-1">
+          <div className="d-flex flex justify-content-around todo-inputs-div w-lg-50 w-100 p-1">
             <input
               type="text"
               placeholder="Company"
               className="my-2 p-2 todo-inputs"
-              // onClick={show}
               name="company"
               value={Inputs.company}
               onChange={change}
@@ -107,7 +110,6 @@ const Todo = () => {
               type="text"
               placeholder="Date"
               className="my-2 p-2 todo-inputs"
-              // onClick={show}
               name="date"
               value={Inputs.date}
               onChange={change}
@@ -116,7 +118,6 @@ const Todo = () => {
               type="text"
               placeholder="Status"
               className="my-2 p-2 todo-inputs"
-              // onClick={show}
               name="status"
               value={Inputs.status}
               onChange={change}
@@ -125,7 +126,6 @@ const Todo = () => {
               type="text"
               placeholder="Category"
               className="my-2 p-2 todo-inputs"
-              // onClick={show}
               name="category"
               value={Inputs.category}
               onChange={change}
@@ -137,16 +137,25 @@ const Todo = () => {
             </button>
           </div>
         </div>
-        <div className="todo-body">
-          <div className="container-fluid">
-            <div className="row ">
-              {Array &&
-                Array.map((item, index) => (
-                  <div
-                    className="col-lg-3 col-11 mx-lg-5 mx-3 my-2"
-                    key={index}
-                  >
 
+      <table style={{ width: '80%', borderCollapse: 'separate', borderSpacing: '1rem', marginLeft: '12vw' }} >
+      <thead>
+        <tr>
+          <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center'}}>Company</th>
+          <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center'}}>Date</th>
+          <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center'}}>Status</th>
+          <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center'}}>Category</th>
+          <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center'}}>Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Array && Array.map((item, index) => (
+          <tr key={index} style={{height: '2rem'}}>
+            <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.company}</td>
+            <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.date}</td>
+            <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.status}</td>
+            <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.category}</td>
+            <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>
                     <TodoCards
                       company={item.company}
                       date={item.date}
@@ -158,12 +167,12 @@ const Todo = () => {
                       updateId={index}
                       toBeUpdate={update}
                     />
-
-                  </div>
-                ))}
-            </div>
-          </div> 
-        </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+       
       </div>
       <div className="todo-update " id="todo-update">
         <div className="container update">
