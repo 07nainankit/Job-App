@@ -1,8 +1,8 @@
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { GrDocumentUpdate } from "react-icons/gr";
+import "./todocard.css"
 
-// change
 const TodoCards = ({
   company,
   date,
@@ -16,6 +16,12 @@ const TodoCards = ({
 }) => {
   return (
     <div className="p-3 todo-card">
+      <div className="cardcont"  >
+        <h5>Company: {company}</h5>
+        <p>Date: {date}</p>
+        <p>Status: {status}</p>
+        <p>Category: {category}</p>
+      </div>
       <div className="d-flex justify-content-around ">
 
         <div className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1 "

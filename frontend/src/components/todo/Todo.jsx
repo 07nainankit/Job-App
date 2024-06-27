@@ -5,11 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Update from "./Update";
 import axios from "axios";
-import { Link } from 'react-router-dom';
-import { BsInfoCircle } from 'react-icons/bs';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { MdOutlineDelete } from 'react-icons/md';
-
+ 
 let id = sessionStorage.getItem("id");
  
 let toUpdateArray = [];
@@ -93,87 +89,121 @@ const Todo = () => {
 
   return (
     <>
-      {/* {submit} */}
       <div className="todo">
         <ToastContainer />
-        <div className="todo-main container d-flex justify-content-center align-items-center my-4 flex-column">
-          <div className="d-flex flex justify-content-around todo-inputs-div w-lg-50 w-100 p-1">
-            <input
-              type="text"
-              placeholder="Company"
-              className="my-2 p-2 todo-inputs"
-              name="company"
-              value={Inputs.company}
-              onChange={change}
-            />
-            <input
-              type="text"
-              placeholder="Date"
-              className="my-2 p-2 todo-inputs"
-              name="date"
-              value={Inputs.date}
-              onChange={change}
-            />
-            <input
-              type="text"
-              placeholder="Status"
-              className="my-2 p-2 todo-inputs"
-              name="status"
-              value={Inputs.status}
-              onChange={change}
-            />
-            <input
-              type="text"
-              placeholder="Category"
-              className="my-2 p-2 todo-inputs"
-              name="category"
-              value={Inputs.category}
-              onChange={change}
-            />
-          </div>
-          <div className=" w-50 w-100 d-flex justify-content-end my-3">
-            <button className="home-btn px-2 py-1" onClick={submit}>
-              Add
-            </button>
-          </div>
-        </div>
+          <div className="todo-main container d-flex justify-content-center align-items-center my-4 flex-column">
+            <div className="d-flex justify-content-around todo-inputs-div" >
+              <input
+                type="text"
+                placeholder="Company"
+                className="my-2 p-2 todo-inputs"
+                name="company"
+                value={Inputs.company}
+                onChange={change}
+              />
+              <input
+                type="text"
+                placeholder="Date"
+                className="my-2 p-2 todo-inputs"
+                name="date"
+                value={Inputs.date}
+                onChange={change}
+              />
+              <input
+                type="text"
+                placeholder="Status"
+                className="my-2 p-2 todo-inputs"
+                name="status"
+                value={Inputs.status}
+                onChange={change}
+              />
+              <input
+                type="text"
+                placeholder="Category"
+                className="my-2 p-2 todo-inputs"
+                name="category"
+                value={Inputs.category}
+                onChange={change}
+              />
+            </div>
 
-      <table style={{ width: '80%', borderCollapse: 'separate', borderSpacing: '1rem', marginLeft: '12vw' }} >
-      <thead>
-        <tr>
-          <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center'}}>Company</th>
-          <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center'}}>Date</th>
-          <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center'}}>Status</th>
-          <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center'}}>Category</th>
-          <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center'}}>Operations</th>
-        </tr>
-      </thead>
-      <tbody>
-        {Array && Array.map((item, index) => (
-          <tr key={index} style={{height: '2rem'}}>
-            <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.company}</td>
-            <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.date}</td>
-            <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.status}</td>
-            <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.category}</td>
-            <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>
-                    <TodoCards
-                      company={item.company}
-                      date={item.date}
-                      status={item.status}
-                      category={item.category}
-                      id={item._id}
-                      delid={del}
-                      display={dis}
-                      updateId={index}
-                      toBeUpdate={update}
-                    />
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-       
+            <div className=" w-50 w-100 d-flex justify-content-end my-3">
+              <button className="home-btn px-2 py-1" onClick={submit}>
+                Add
+              </button>
+            </div>
+          </div>
+        
+          <div className="Contenttable">
+            <table style={{ width: '70%', borderCollapse: 'separate', borderSpacing: '1rem', marginLeft: '12vw' }} >
+              <thead>
+                <tr>
+                  <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center', width: "10rem"}}>Company</th>
+                  <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center', width: "5rem"}}>Date</th>
+                  <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center', width: "5rem"}}>Status</th>
+                  <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center', width: "5rem"}}>Category</th>
+                  <th style={{ border: '1px solid #475569', borderRadius: '0.25rem', textAlign: 'center', width: "5rem"}}>Operations</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Array && Array.map((item, index) => (
+                  <tr key={index} style={{height: '2rem'}}>
+                    <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.company}</td>
+                    <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.date}</td>
+                    <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.status}</td>
+                    <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>{item.category}</td>
+                    <td style={{ border: '1px solid #334155', borderRadius: '0.25rem', textAlign: 'center' }}>
+                            <TodoCards
+                              company={item.company}
+                              date={item.date}
+                              status={item.status}
+                              category={item.category}
+                              id={item._id}
+                              delid={del}
+                              display={dis}
+                              updateId={index}
+                              toBeUpdate={update}
+                            />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="contentcard ">
+            <div className="todo-body">
+              <div className="container-fluid">
+                <div className="row ">
+                  {Array &&
+                    Array.map((item, index) => (
+                      <>
+                        
+                      <div 
+                        className="col-lg-3 col-11 mx-lg-5 mx-3 my-2"
+                        key={index}
+                      >
+                        <TodoCards
+                            company={item.company}
+                            date={item.date}
+                            status={item.status}
+                            category={item.category}
+                            id={item._id}
+                            delid={del}
+                            display={dis}
+                            updateId={index}
+                            toBeUpdate={update}
+                          />
+                      </div>
+                    </>
+                  ))}
+                </div>
+              </div> 
+            </div>
+          </div>
+
       </div>
+
       <div className="todo-update " id="todo-update">
         <div className="container update">
           <Update display={dis} update={toUpdateArray} />
