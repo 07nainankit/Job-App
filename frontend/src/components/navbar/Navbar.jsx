@@ -12,10 +12,12 @@ const Navbar = () => {
   const history = useNavigate();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   const dispatch = useDispatch();
+
   const logout = () => {
     sessionStorage.clear("id");
     dispatch(authActions.logout());
     history("/");
+    history(0); // again refresh 
   };
   
   return (
