@@ -7,10 +7,10 @@ const conn = async (req, res) => {
         "mongodb+srv://anain829:acrzBEVN50BmYDjK@cluster0.3lgirke.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
       )
       .then(() => {
-        console.log("Connected");
+        console.log("Connected :>");
       });
   } catch (error) {
     console.log(error);
   }
 };
-conn();
+conn(); 
