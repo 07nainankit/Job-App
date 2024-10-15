@@ -10,7 +10,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     },
   },
-});
+}); 
 
 export const authActions = authSlice.actions;
 

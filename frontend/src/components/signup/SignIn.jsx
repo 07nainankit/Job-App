@@ -29,15 +29,16 @@ const SignIn = () => {
       const response = await axios.post(
         `${window.location.origin}/api/v1/signin`,
         Inputs
-      );
+      ); 
       console.log(" data fetched");
       console.log(response.data);
       if (response.data) {
+        //  
         sessionStorage.setItem("id", response.data.user._id);
         dispatch(authActions.login());
         history("/");
         history(0);
-      } else {
+      } else { 
         // Handle the case where the response does not contain the expected data
         console.error("Response data or _id not found in the response.");
       }

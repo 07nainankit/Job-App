@@ -15,8 +15,8 @@ router.post("/register", async (req, res) => {
     res.status(200).json({ message: "User Already Exists" });
   }
 });
-
-//SIGN IN
+ 
+//SIGN IN - 
 router.post("/signin", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -34,7 +34,9 @@ router.post("/signin", async (req, res) => {
       return res.status(400).json({ message: "Password is not correct" });
     }
 
-    const { password, ...others } = user._doc;
+    const { password, ...others } = user._doc; // ****
+    // except password get everything in others from user._doc (user document)
+
     res.status(200).json({ user: others });
   } catch (error) {
     console.error(error);
