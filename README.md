@@ -8,6 +8,9 @@ A web application that helps users track job applications efficiently. This proj
 - **Responsive Design:** User-friendly interface optimized for both desktop and mobile devices.
 - **Authentication:** Secure login and registration system.
 
+## DEMO 
+https://job-app-lemon.vercel.app/
+
 ## 🛠️ Tech Stack
 
 - **Frontend:** React, Redux, HTML5, CSS3, JavaScript
